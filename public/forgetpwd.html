@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <title>Payment App - Forget Password</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Including Custom css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="index.html">Payment App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="login.html">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="signup.html">Signup</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="forgetpwd.html">Forget Password</a>
+              </li>    
+            </ul>
+        </div>  
+    </nav>
+    <!-- navbar -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Blank DIV -->
+            </div>
+
+            <div class="col-md-6 main">
+                <!-- Form Tag starts here -->
+                <!-- Action attribute is the route on backend. Method is POST -->
+                <form action="/forgot_password" method="post">
+                    <h1>Forget Password</h1>
+
+                    <input class="box" type="email" name="email" id="email" placeholder="Enter your E-Mail " required /><br />
+
+                    <br />
+                    <input type="submit" id="submitDetails" name="submitDetails" value="Submit" /><br />
+                </form>
+                <div class="text-center pt-3 col-sm-12">
+                    <a href="signup.html">SignUp</a>
+                    <a href="login.html">SignIn</a>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+                <!-- Blank DIV -->
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var submitDetails = document.getElementById('submitDetails');
+
+        submitDetails.addEventListener('click', forgotPasswordClicked);
+
+        function forgotPasswordClicked(event) {
+            event.preventDefault();
+            var data = "email=" + document.getElementById('email').value;
+            ajaxCall(data, "http://127.0.0.1/:3000/public/forgot_password", function(status, response) {
+                if (status == 200) {
+                    alert('Password reset instructions have been sent to your account primary email address.');
+                } else {
+                    alert('Error', status)
+                }
+            });
+        }
+
+        function ajaxCall(data, url, callback) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", url, true);
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    return callback(this.status, JSON.parse(xhttp.response));
+                }
+            }
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send(data);
+        }
+    </script>
+</body>
+
+</html>

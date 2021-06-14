@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Payment App - Login</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <!-- Including Custom css -->
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+    </head>
+    <body>
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <a class="navbar-brand" href="index.html">Payment App</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Signup</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="forgetpwd.html">Forget Password</a>
+                  </li>    
+                </ul>
+            </div>  
+        </nav>
+        <!-- navbar -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <!-- Blank DIV -->
+                </div>
+                <div class="col-md-6 main">
+                    <!-- Form Tag starts here -->
+                    <!-- Action attribute is the route on backend. Method is POST -->
+                    <form action="/index" method="post">
+                        <h1>Login User</h1>
+                        <div>
+                            <input class="box" type="email" name="email" id="email" placeholder="Enter your E-Mail " required />
+                        </div>
+                        <div>
+                            <input class="box" type="password" name="password" id="password" placeholder="Enter your Password " required />
+                        </div>
+                        <div>
+                            <input type="submit" id="submitDetails" name="submitDetails" value="Login" />
+                        </div>
+                        <div class="text-center col-sm-12 pt10">
+                                <a href="signup.html">New Use SignUp</a>
+                                <a href="forgetpwd.html">Forget Password</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
